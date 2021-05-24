@@ -2,8 +2,8 @@ import * as yup from 'yup'
 
 const schema = yup.object().shape({
     username: yup.string()
-        .min(3, 'username must be at least three characters')
-        .required('username is required'),
+        .required('username is required')
+        .min(3, 'username must be at least three characters'),
     password: yup.string()
         .required('password is required'),
     confirmPassword: yup.string()
@@ -12,6 +12,15 @@ const schema = yup.object().shape({
         .oneOf(["client", "instructor"])
 })
 
+const loginSchema = yup.object().shape({
+    username: yup.string()
+        .required('username is required')
+        .min(3, 'username must be at least three characters'),
+    password: yup.string()
+        .required('password is required')
+})
+
 export {
+    loginSchema,
     schema
 }

@@ -10,10 +10,14 @@ function RegisterForm(props) {
         confirmPassword: "",
         role: ""
     }
+    const [disabled, setDisabled] = useState(true);
     const [form, setForm] = useState(initialValues);
     const [shaped, setShaped] = useState({});
 
     const checkSchema = (name, value) => {
+        schema.isValid(form)
+            .then((valid) => setDisabled(!valid));
+
         yup.reach(schema, name).validate(value)
             .then(() => {
                 setShaped({...shaped, [name]: ''});
@@ -60,7 +64,8 @@ function RegisterForm(props) {
                 <option value="instructor">Instructor</option>
                 </select>
             </label>
-            <button id="button-register" className="btn btn-register">Register</button>
+            <button id="button-register" className="btn btn-register"
+                disabled={disabled} >Register</button>
             {props.children}
         </div>
     )

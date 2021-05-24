@@ -1,17 +1,25 @@
 import React, { useState } from 'react'
 import '../styles/login.css'
 import * as yup from 'yup'
-import { schema } from '../schema/loginSchema'
+import { loginSchema as schema } from '../schema/loginSchema'
 
 function LoginForm(props) {
     const initialValues = {
         username: "",
         password: "",
     }
+    const [disabled, setDisabled] = useState(true);
     const [form, setForm] = useState(initialValues);
     const [shaped, setShaped] = useState({});
 
     const checkSchema = (name, value) => {
+        schema.isValid(form)
+            .then((valid) => {
+                setDisabled(!valid);
+                console.log(form)
+                console.log(!valid); 
+            });
+
         yup.reach(schema, name).validate(value)
             .then(() => {
                 setShaped({...shaped, [name]: ''});
@@ -46,7 +54,8 @@ function LoginForm(props) {
                 <input id="password" name="password" type="password"
                 onChange={handleChange} value={form.password} />
             </label>
-            <button id="button-login" className="btn btn-login" >Login</button>
+            <button id="button-login" className="btn btn-login" 
+                disabled={disabled} >Login</button>
             {props.children}
         </div>
     )
