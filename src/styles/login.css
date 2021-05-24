@@ -1,0 +1,25 @@
+.btn {
+    max-width: 20%;
+}
+
+.error {
+    color: red;
+    font-size: 2rem;
+}
+
+.form {
+    display: flex;
+    margin: 0.5rem auto;
+    flex-flow: column nowrap;
+    font-size: 1.2rem;
+    justify-self: center;
+}
+
+.form label {
+    margin-right: 1rem;
+    font-size: 2rem;
+}
+
+.form input {
+    margin-left: 1rem;
+}
