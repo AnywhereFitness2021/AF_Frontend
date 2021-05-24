@@ -28,7 +28,7 @@ function RegisterForm(props) {
                 <input id="password" name="password" type="password"
                     onChange={handleChange} value={form.password} />
             </label>
-            <label id="label-confirm-password" htmlFor="confirmPassword">Password
+            <label id="label-confirm-password" htmlFor="confirmPassword">Confirm Password
                 <input id="confirmPassword" name="confirmPassword" type="password" onChange={handleChange} 
                 value={form.confirmPassword} />
             </label>
