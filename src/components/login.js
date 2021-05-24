@@ -13,13 +13,6 @@ function LoginForm(props) {
     const [shaped, setShaped] = useState({});
 
     const checkSchema = (name, value) => {
-        schema.isValid(form)
-            .then((valid) => {
-                setDisabled(!valid);
-                console.log(form)
-                console.log(!valid); 
-            });
-
         yup.reach(schema, name).validate(value)
             .then(() => {
                 setShaped({...shaped, [name]: ''});
@@ -28,6 +21,13 @@ function LoginForm(props) {
                     setShaped({...shaped, [name]: err.errors[0]});
                 }
         });
+ 
+        schema.isValid(form)
+            .then((valid) => {
+                setDisabled(!valid);
+                console.log(form)
+                console.log(!valid); 
+            });
     }
 
     const handleChange = (event) => {

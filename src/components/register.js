@@ -15,9 +15,6 @@ function RegisterForm(props) {
     const [shaped, setShaped] = useState({});
 
     const checkSchema = (name, value) => {
-        schema.isValid(form)
-            .then((valid) => setDisabled(!valid));
-
         yup.reach(schema, name).validate(value)
             .then(() => {
                 setShaped({...shaped, [name]: ''});
@@ -26,6 +23,9 @@ function RegisterForm(props) {
                     setShaped({...shaped, [name]: err.errors[0]});
                 }
         });
+
+        schema.isValid(form)
+            .then((valid) => setDisabled(!valid));
     }
 
     const handleChange = (event) => {
