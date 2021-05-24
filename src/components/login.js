@@ -46,6 +46,7 @@ function LoginForm(props) {
                 <input id="password" name="password" type="password"
                 onChange={handleChange} value={form.password} />
             </label>
+            <button id="button-login" className="btn btn-login" >Login</button>
             {props.children}
         </div>
     )

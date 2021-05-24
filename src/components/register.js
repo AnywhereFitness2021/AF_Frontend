@@ -60,6 +60,7 @@ function RegisterForm(props) {
                 <option value="instructor">Instructor</option>
                 </select>
             </label>
+            <button id="button-register" className="btn btn-register">Register</button>
             {props.children}
         </div>
     )
