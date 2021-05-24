@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import '../styles/login.css'
 import * as yup from 'yup'
 import { schema } from '../schema/loginSchema'
@@ -13,6 +14,7 @@ function RegisterForm(props) {
     const [disabled, setDisabled] = useState(true);
     const [form, setForm] = useState(initialValues);
     const [shaped, setShaped] = useState({});
+    let history = useHistory();
 
     const checkSchema = (name, value) => {
         yup.reach(schema, name).validate(value)
@@ -26,6 +28,10 @@ function RegisterForm(props) {
 
         schema.isValid(form)
             .then((valid) => setDisabled(!valid));
+    }
+
+    const gotoLogin = () => {
+        history.push("/login");
     }
 
     const handleChange = (event) => {
@@ -66,6 +72,8 @@ function RegisterForm(props) {
             </label>
             <button id="button-register" className="btn btn-register"
                 disabled={disabled} >Register</button>
+            <button id="button-nav-login" className="btn nav-btn nav-login"
+                onClick={gotoLogin} >Login</button>
             {props.children}
         </div>
     )
