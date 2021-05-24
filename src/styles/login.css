@@ -1,3 +1,8 @@
+.error {
+    color: red;
+    font-size: 2rem;
+}
+
 .form {
     display: flex;
     margin: 0.5rem auto;
