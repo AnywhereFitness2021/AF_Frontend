@@ -5,16 +5,16 @@ Fitness classes can be held anywhere - an unfinished basement, a park, or a gara
 
 Marketing page: https://github.com/LambdaSchoolBuildWeeks/Unit1Marketing/raw/main/AnywhereFitness.zip
 
-Components
-[ ] Create New Class
-[ ] Edit Class
-[ ] Join Class
-[ ] Login Screen
-[ ] Manage Classes - Client
-[ ] Manage Classes - Instructor
-[ ] Onboarding - Client
-[ ] Onboarding - Instructor
-[ ] Registration Screen
-[ ] Reschedule Class
-[ ] Search Classes
-[ ] Virtual Punch Pass
+Components  
+[ ] Create New Class  
+[ ] Edit Class  
+[ ] Join Class  
+[ ] Login Screen  
+[ ] Manage Classes - Client  
+[ ] Manage Classes - Instructor  
+[ ] Onboarding - Client  
+[ ] Onboarding - Instructor  
+[ ] Registration Screen  
+[ ] Reschedule Class  
+[ ] Search Classes  
+[ ] Virtual Punch Pass  
