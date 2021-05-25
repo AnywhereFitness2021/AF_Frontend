@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './index.css';
 import Logo from './AnywhereFitnessLogo.png';
 //CUSTOM IMPORTS
-import { LoginForm } from './components/login'
+import LoginForm from './components/login'
 import { RegisterForm } from './components/register'
 
 function App() {
