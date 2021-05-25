@@ -7,9 +7,9 @@ const initialFormValues = {
     type: '',
     startTime: '',
     duration: 0,
-    intensityLevel: 0,
+    intensityLevel: '',
     location: '',
-    currentAttendees: 0,
+    attendees: 0,
     maxClassSize: 0
 };
 
@@ -17,7 +17,7 @@ function CreateClassForm(props) {
     const [formValues, setFormValues] = useState(initialFormValues);
     //const { push } = useHistory();
   
-    // const cancelButton = () => {
+    // const handleCancel = () => {
     //   push('/');
     // }
 
@@ -50,20 +50,30 @@ function CreateClassForm(props) {
     };
       
 
-    const { name, type, startTime, duration, intensityLevel, location, currentAttendees, maxClassSize } = formValues
+    const { 
+      name, 
+      type, 
+      startTime, 
+      duration, 
+      intensityLevel, 
+      location,
+      attendees, 
+      maxClassSize } = formValues
+
+
     return (
       <form onSubmit={onSubmit}>
         <div>
-          <h2>Your Name:</h2>
+          <h2>Add a Class:</h2>
           <div>
             <label>
-              Name&nbsp;
+              Name of Class&nbsp;
               <input
                 type="text"
                 value={name}
                 onChange={onChange}
                 name="name"
-                placeholder="enter name here.."
+                placeholder="enter class name here.."
               />
             </label>
           </div>
@@ -104,14 +114,12 @@ function CreateClassForm(props) {
           <div>
             <label>
               Intensity Level:&nbsp;
-              <input
-                type="range"
-                min="0"
-                max="10"
-                valueAsNumber={intensityLevel}
-                onChange={onChange}
-                name="intensityLevel"
-              />
+              <select value={intensityLevel} name="intensityLevel" onChange={onChange}>
+                <option value=''>-- Select an Intensity Level --</option>
+                <option value='Beginner'>Beginner</option>
+                <option value='Intermediate'>Intermediate</option>
+                <option value='Advanced'>Advanced</option>
+              </select>
             </label>
           </div>
           <div>
@@ -131,9 +139,9 @@ function CreateClassForm(props) {
               Current Registered Attendees:&nbsp;
               <input
                 type="number"
-                value={currentAttendees}
+                value={attendees}
                 onChange={onChange}
-                name="currentAttendees"
+                name="attendees"
               />
             </label>
           </div>
@@ -149,8 +157,8 @@ function CreateClassForm(props) {
             </label>
           </div>
           <div>
-            <button>Submit</button>
-            {/* <button onClick={cancelButton}>Cancel</button> */}
+            <button>Add</button>
+            {/* <button onClick={handleCancel}>Cancel</button> */}
           </div>
         </div>
       </form>
