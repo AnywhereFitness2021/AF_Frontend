@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
+import * as yup from 'yup';
+import { classFormSchema as schema} from '../schema/classformSchema';
 
 const initialFormValues = {
     name: '',
@@ -15,6 +17,7 @@ const initialFormValues = {
 
 function CreateClassForm(props) {
     const [formValues, setFormValues] = useState(initialFormValues);
+    const [formErrors, setFormErrors] = useState({});
     //const { push } = useHistory();
   
     // const handleCancel = () => {
@@ -38,6 +41,18 @@ function CreateClassForm(props) {
     //     })
     //   }
     //end
+
+    const checkSchema = (name, value) => {
+      yup.reach(schema, name).validate(value)
+      .then(() => {
+          setFormErrors({...formErrors, [name]: ''});
+      }).catch((err) => {
+          if (err.errors) { 
+              setFormErrors({...formErrors, [name]: err.errors[0]});
+          }
+  });
+
+};
   
     const onSubmit = (evt) => {
       evt.preventDefault();
@@ -46,7 +61,9 @@ function CreateClassForm(props) {
     };
 
     const onChange = (evt) => {
-        setFormValues({ ...formValues, [evt.target.name]: evt.target.value });
+        let { name, value } = evt.target;
+        setFormValues({ ...formValues, [name]: value });
+        checkSchema(name, value);
     };
       
 
@@ -66,6 +83,7 @@ function CreateClassForm(props) {
         <div>
           <h2>Add a Class:</h2>
           <div>
+            <div className="error">{formErrors.name}</div>
             <label>
               Name of Class&nbsp;
               <input
@@ -78,6 +96,7 @@ function CreateClassForm(props) {
             </label>
           </div>
           <div>
+            <div className="error">{formErrors.type}</div>
             <label>
               Class Type:&nbsp;
               <input
@@ -90,6 +109,7 @@ function CreateClassForm(props) {
             </label>
           </div>
           <div>
+            <div className="error">{formErrors.startTime}</div>
             <label>
               Choose a start time:&nbsp;
               <input
@@ -101,6 +121,7 @@ function CreateClassForm(props) {
             </label>
           </div>
           <div>
+            <div className="error">{formErrors.duration}</div>
             <label>
               Duration (in minutes):&nbsp;
               <input
@@ -112,6 +133,7 @@ function CreateClassForm(props) {
             </label>
           </div>
           <div>
+            <div className="error">{formErrors.intensityLevel}</div>
             <label>
               Intensity Level:&nbsp;
               <select value={intensityLevel} name="intensityLevel" onChange={onChange}>
@@ -123,6 +145,7 @@ function CreateClassForm(props) {
             </label>
           </div>
           <div>
+            <div className="error">{formErrors.location}</div>
             <label>
               Location:&nbsp;
               <input
@@ -135,6 +158,7 @@ function CreateClassForm(props) {
             </label>
           </div>
           <div>
+            <div className="error">{formErrors.attendees}</div>
             <label>
               Current Registered Attendees:&nbsp;
               <input
@@ -146,6 +170,7 @@ function CreateClassForm(props) {
             </label>
           </div>
           <div>
+            <div className="error">{formErrors.maxClassSize}</div>
             <label>
               Max Class Size:&nbsp;
               <input
