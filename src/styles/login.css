@@ -3,7 +3,7 @@
 }
 
 .error {
-    color: blue;
+    color: darkviolet;
     font-size: 2rem;
 }
 
@@ -17,7 +17,7 @@
     justify-self: center;
     max-width: 50%;
     border-radius: 1rem;
-    background-image: linear-gradient(to bottom right, yellow, red);
+    background-image: linear-gradient(to bottom right, greenyellow, limegreen);
 }
 
 .form button {
