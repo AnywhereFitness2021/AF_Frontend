@@ -63,7 +63,7 @@ function RegisterForm(props) {
             </label>
             <div id="error-role" className="error error-role" >{shaped.role}</div>
             <label id="label-role" htmlFor="role" onChange={handleChange} 
-                value={form.role} >Role
+                value={form.role}>Role
                 <select id="role" name="role">
                 <option value="">Select Role</option>
                 <option value="client">Client</option>
