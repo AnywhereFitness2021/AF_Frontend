@@ -9,6 +9,7 @@ export const FETCH_FAIL = "FETCH_FAIL";
 export const EDIT_CLASS = 'EDIT_CLASS';
 export const DELETE_CLASS = "DELETE_CLASS";
 export const ADD_CLASS = "ADD_CLASS";
+export const ADD_USER = "ADD_USER";
 
 export const fetchClasses = () => {
   return (dispatch => {
@@ -59,4 +60,8 @@ export const postNewClass = (item) => {
   
   export const deleteClass = (id) => {
     return({type:DELETE_CLASS, payload: id})
+  }
+
+  export const createUser = user => {
+    return {type: ADD_USER, payload: user}
   }

@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import '../styles/login.css'
 import * as yup from 'yup'
 import { loginSchema as schema } from '../schema/loginSchema'
+import axios from 'axios';
 
 function LoginForm(props) {
     const initialValues = {
@@ -27,10 +28,30 @@ function LoginForm(props) {
         schema.isValid(form)
             .then((valid) => {
                 setDisabled(!valid);
-                console.log(form)
-                console.log(!valid); 
+                //console.log(form)
+                //console.log(!valid); 
             });
     }
+
+    const postNewLogin = (newLogin) => {
+        axios
+          .post('https://anywhere-fitness-2021.herokuapp.com/api/users/login', newLogin)
+          .then((res) => {
+            console.log('login', res);
+            const token = res.data.token;
+            localStorage.setItem('token', `"${token}"`);
+            if (res.data.role === 'client') {
+                history.push('/client');
+                alert(res.data.welcomeMessage)
+            } else {
+                history.push('/instructor');
+                alert(res.data.welcomeMessage)
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
 
     const goRegister = () => {
         history.push("/");
@@ -41,6 +62,10 @@ function LoginForm(props) {
         const updateData = (type === 'checkbox')?checked:value;
         setForm({...form, [name]: updateData});
         checkSchema(name, updateData);
+    }
+
+    const handleSubmit = () => {
+        postNewLogin(form)
     }
 
     return (
@@ -61,7 +86,7 @@ function LoginForm(props) {
                 onChange={handleChange} value={form.password} />
             </label>
             <button id="button-login" className="btn btn-login" 
-                disabled={disabled} >Login</button>
+                disabled={disabled} onClick={handleSubmit}>Login</button>
             <button id="button-nav-register" className="btn btn-nav btn-nav-register" onClick={goRegister}>Register</button>
             {props.children}
         </div>
