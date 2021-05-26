@@ -1,6 +1,7 @@
 // filler file to help Github confirm file structure
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 export const FETCH_START = "FETCH_START";
 export const FETCH_SUCCESS = "FETCH_SUCCESS";
@@ -10,19 +11,38 @@ export const DELETE_CLASS = "DELETE_CLASS";
 export const ADD_CLASS = "ADD_CLASS";
 
 export const fetchClasses = () => {
-    return (dispatch => {
-        dispatch({type: FETCH_START});
+  return (dispatch => {
+    dispatch({type: FETCH_START});
     
-        dispatch(fetchStart());
-        axios.get('https://anywhere-fitness-2021.herokuapp.com/api/classes')
-          .then(res=> {
-            console.log(res.data);
-            dispatch({type: FETCH_SUCCESS, payload:res.data});
-          })
-          .catch(err=>{
-            dispatch({type: FETCH_FAIL, payload:err});
-          })
-    });
+    dispatch(fetchStart());
+    axios.get('https://anywhere-fitness-2021.herokuapp.com/api/classes')
+    .then(res=> {
+      console.log(res.data);
+      dispatch({type: FETCH_SUCCESS, payload:res.data});
+    })
+    .catch(err=>{
+      dispatch({type: FETCH_FAIL, payload:err});
+    })
+  });
+}
+
+
+export const postNewClass = (item) => {
+    return (dispatch => {
+      dispatch({type:FETCH_START});
+  
+      dispatch(fetchStart());
+      axios
+      .post('https://anywhere-fitness-2021.herokuapp.com/api/classes', item)
+      .then((res) => {
+        dispatch({type: FETCH_SUCCESS, payload:res.data})
+        console.log(res);
+      })
+      .catch((err) => {
+        dispatch({type: FETCH_FAIL, payload:err});
+        console.log('ERROR', err);
+      });
+    })
   }
 
   export const fetchStart = ()=> {

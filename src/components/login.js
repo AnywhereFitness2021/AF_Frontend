@@ -62,7 +62,7 @@ function LoginForm(props) {
             </label>
             <button id="button-login" className="btn btn-login" 
                 disabled={disabled} >Login</button>
-            <button id="button-nav-register" className="btn btn-nav btn-nav-register" onClick={goRegister} >Register</button>
+            <button id="button-nav-register" className="btn btn-nav btn-nav-register" onClick={goRegister}>Register</button>
             {props.children}
         </div>
     )
