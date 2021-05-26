@@ -1,5 +1,5 @@
 //TECH IMPORTS
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 //STYLING IMPORTS
 import './index.css';
@@ -12,6 +12,7 @@ import CreateClassForm from './components/CreateClassForm';
 import Client from './components/Client';
 import Instructor from './components/Instructor';
 import EditClassForm from './components/EditClassForm';
+import Homepage from './components/Homepage';
 import PrivateRoute from './components/PrivateRoute';
 
 const StyledLink = styled(Link)`
@@ -30,7 +31,6 @@ const StyledLink = styled(Link)`
 `
 
 function App() {
-
   const logout = () => {
     window.localStorage.removeItem('token');
   };
@@ -40,14 +40,15 @@ function App() {
         <div className="logoAndHeading"></div>
         <img className="logo" src={Logo} alt="gym barbell"/>
         <h1 className="mainHeading">Anywhere Fitness</h1>
-        <StyledLink onClick={logout} to="/login">Logout</StyledLink>
+        {window.localStorage.getItem("token") && <StyledLink onClick={logout} to="/login">Logout</StyledLink>}
           <Switch>
             <PrivateRoute exact path="/client" component={Client}/>
             <PrivateRoute exact path="/instructor" component={Instructor}/>
             <Route exact path="/addclass" component={CreateClassForm}/>
             <Route exact path="/editclass/:id" component={EditClassForm}/>
             <Route path="/login" component={LoginForm} />
-            <Route exact path="/" component={RegisterForm} />
+            <Route path="/register" component={RegisterForm}/>
+            <Route exact path="/" component={Homepage} />
           </Switch>
       </Router>
     </>
