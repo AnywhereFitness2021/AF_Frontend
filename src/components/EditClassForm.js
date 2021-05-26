@@ -63,7 +63,7 @@ const EditClassForm = (props) => {
 
 
     const handleCancel = () => {
-        push('/');
+        push('/instructor');
       }
 
 

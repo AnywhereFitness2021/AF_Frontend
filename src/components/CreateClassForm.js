@@ -22,7 +22,7 @@ function CreateClassForm(props) {
     const { push } = useHistory();
   
     const handleCancel = () => {
-      push('/');
+      push('/instructor');
     }
 
     
