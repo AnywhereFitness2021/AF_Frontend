@@ -83,7 +83,7 @@ const Client = (props) => {
             <input className="search" type="time" placeholder="Filter by time.." onChange={onChange2}/>
             <input className="search" type="number" placeholder="Filter by duration..." onChange={onChange3}/>
             <input className="search" type="text" placeholder="Filter by type..." onChange={onChange4}/>
-            <input className="search" type="text" placeholder="Filter by intesity level..." onChange={onChange5}/>
+            <input className="search" type="text" placeholder="Filter by intensity level..." onChange={onChange5}/>
             <input className="search" type="text" placeholder="Filter by location..." onChange={onChange6}/>
         </div>
         <h1>Classes Available to Join:</h1>

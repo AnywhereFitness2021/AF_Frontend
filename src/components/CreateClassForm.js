@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { connect } from 'react-redux';
 import * as yup from 'yup';
 import { classFormSchema as schema} from '../schema/classformSchema';
+import axios from 'axios';
+
 
 const initialFormValues = {
     name: '',
@@ -18,29 +19,13 @@ const initialFormValues = {
 function CreateClassForm(props) {
     const [formValues, setFormValues] = useState(initialFormValues);
     const [formErrors, setFormErrors] = useState({});
-    //const { push } = useHistory();
+    const { push } = useHistory();
   
-    // const handleCancel = () => {
-    //   push('/');
-    // }
+    const handleCancel = () => {
+      push('/');
+    }
 
-    //goes in actions file
-    // export const postNewClass = (class) => {
-    //     return (dispatch => {
-    //       dispatch({type:FETCH_START});
-      
-    //       dispatch(fetchStart());
-    //       axiosWithAuth()
-    //       .post('/', class)
-    //       .then((res) => {
-    //         dispatch({type: FETCH_SUCCESS, payload:res.data})
-    //       })
-    //       .catch((err) => {
-    //         dispatch({type: FETCH_FAIL, payload:err});
-    //       });
-    //     })
-    //   }
-    //end
+    
 
     const checkSchema = (name, value) => {
       yup.reach(schema, name).validate(value)
@@ -56,8 +41,14 @@ function CreateClassForm(props) {
   
     const onSubmit = (evt) => {
       evt.preventDefault();
-      //postNewClass(formValues);
-      //push('/');
+      axios.post('https://anywhere-fitness-2021.herokuapp.com/api/classes', formValues)
+           .then(res => {
+            console.log(res);
+            push('/client');
+           })
+           .catch(err => {
+             console.log(err);
+           })
     };
 
     const onChange = (evt) => {
@@ -183,7 +174,7 @@ function CreateClassForm(props) {
           </div>
           <div>
             <button>Add</button>
-            {/* <button onClick={handleCancel}>Cancel</button> */}
+            <button onClick={handleCancel}>Cancel</button>
           </div>
         </div>
       </form>

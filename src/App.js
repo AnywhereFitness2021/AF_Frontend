@@ -6,7 +6,11 @@ import './index.css';
 import Logo from './AnywhereFitnessLogo.png';
 //CUSTOM IMPORTS
 import LoginForm from './components/login'
-import { RegisterForm } from './components/register'
+import RegisterForm from './components/register'
+import CreateClassForm from './components/CreateClassForm';
+import Client from './components/Client';
+import Instructor from './components/Instructor';
+
 
 function App() {
   return (
@@ -16,8 +20,10 @@ function App() {
       <h1 className="mainHeading">Anywhere Fitness</h1>
       <Router>
         <Switch>
-           <Route exact path="/" component={RegisterForm} />
+           <Route exact path="/" component={Instructor} />
            <Route path="/login" component={LoginForm} />
+           <Route exact path="/client" component={Client}/>
+           <Route exact path="/create" component={CreateClassForm}/>
         </Switch>
       </Router>
     </>

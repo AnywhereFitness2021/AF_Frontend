@@ -5,9 +5,9 @@ const classFormSchema = yup.object().shape({
         .required('Class must have a name'),
     type: yup.string()
         .required('Class must have a type'),
-    startTime: yup.DateSchema()
+    startTime: yup.string()
         .required('Must have a start time and date'),
-    duration: yup.number
+    duration: yup.number()
         .required('Must have a duration'),
     intensityLevel: yup.string()
         .required('must have an intensity level'),
