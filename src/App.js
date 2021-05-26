@@ -23,7 +23,7 @@ function App() {
            <Route exact path="/" component={Instructor} />
            <Route path="/login" component={LoginForm} />
            <Route exact path="/client" component={Client}/>
-           <Route exact path="/create" component={CreateClassForm}/>
+           <Route exact path="/addclass" component={CreateClassForm}/>
         </Switch>
       </Router>
     </>
