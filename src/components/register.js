@@ -3,6 +3,9 @@ import { useHistory } from 'react-router-dom'
 import '../styles/login.css'
 import * as yup from 'yup'
 import { schema } from '../schema/loginSchema'
+import axios from 'axios'
+import { connect } from 'react-redux';
+import { createUser } from '../actions/Actions';
 
 function RegisterForm(props) {
     const initialValues = {
@@ -15,6 +18,18 @@ function RegisterForm(props) {
     const [form, setForm] = useState(initialValues);
     const [shaped, setShaped] = useState({});
     let history = useHistory();
+
+    const postNewUsers = (user) => {
+        axios
+          .post('https://anywhere-fitness-2021.herokuapp.com/api/users/register', user)
+          .then((res) => {
+            console.log(res.data);
+            history.push('/login');
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+    };
 
     const checkSchema = (name, value) => {
         yup.reach(schema, name).validate(value)
@@ -39,6 +54,10 @@ function RegisterForm(props) {
         const updateData = (type === 'checkbox')?checked:value;
         setForm({...form, [name]: updateData});
         checkSchema(name, updateData);
+    }
+
+    const handleSubmit = () => {
+        postNewUsers(form)
     }
 
     return (
@@ -71,7 +90,7 @@ function RegisterForm(props) {
                 </select>
             </label>
             <button id="button-register" className="btn btn-register"
-                disabled={disabled} >Register</button>
+                disabled={disabled} onClick={handleSubmit}>Register</button>
             <button id="button-nav-login" className="btn nav-btn nav-login"
                 onClick={gotoLogin} >Login</button>
             {props.children}
@@ -79,4 +98,4 @@ function RegisterForm(props) {
     )
 }
 
-export default RegisterForm;
+export default connect(null, { createUser })(RegisterForm);

@@ -6,9 +6,16 @@ import {
   FETCH_SUCCESS, 
   FETCH_FAIL, 
   DELETE_CLASS,
-  ADD_CLASS } from '../actions/Actions';
+  ADD_CLASS,
+  ADD_USER } from '../actions/Actions';
   
   const initialState = {
+    user: {
+      username:'',
+      password:'',
+      role:'',
+      skip: false
+    },
     classes: [],
     isFetching: false,
     error: ''
@@ -49,6 +56,11 @@ import {
         return({
           ...state,
           classes: [...state.classes, action.payload]
+        })
+      case(ADD_USER):
+        return({
+          ...state,
+          user: action.payload
         })
 
       default:
