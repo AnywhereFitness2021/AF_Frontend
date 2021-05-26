@@ -16,9 +16,9 @@ export const fetchClasses = () => {
     dispatch({type: FETCH_START});
     
     dispatch(fetchStart());
-    axios.get('https://anywhere-fitness-2021.herokuapp.com/api/classes')
+    axiosWithAuth().get('/classes')
     .then(res=> {
-      console.log(res.data);
+      console.log('classes', res.data);
       dispatch({type: FETCH_SUCCESS, payload:res.data});
     })
     .catch(err=>{

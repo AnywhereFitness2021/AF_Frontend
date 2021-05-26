@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import * as yup from 'yup';
 import { classFormSchema as schema} from '../schema/classformSchema';
-import axios from 'axios';
 import axiosWithAuth from '../utils/axiosWithAuth';
 
 
@@ -28,17 +27,17 @@ function CreateClassForm(props) {
 
     
 
-  //   const checkSchema = (name, value) => {
-  //     yup.reach(schema, name).validate(value)
-  //     .then(() => {
-  //         setFormErrors({...formErrors, [name]: ''});
-  //     }).catch((err) => {
-  //         if (err.errors) { 
-  //             setFormErrors({...formErrors, [name]: err.errors[0]});
-  //         }
-  // });
+    const checkSchema = (name, value) => {
+      yup.reach(schema, name).validate(value)
+      .then(() => {
+          setFormErrors({...formErrors, [name]: ''});
+      }).catch((err) => {
+          if (err.errors) { 
+              setFormErrors({...formErrors, [name]: err.errors[0]});
+          }
+  });
 
-// };
+  };
   
     const onSubmit = (evt) => {
       evt.preventDefault();
@@ -55,7 +54,7 @@ function CreateClassForm(props) {
     const onChange = (evt) => {
         let { name, value } = evt.target;
         setFormValues({ ...formValues, [name]: value });
-        // checkSchema(name, value);
+        checkSchema(name, value);
     };
       
 
