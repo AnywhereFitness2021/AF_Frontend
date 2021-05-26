@@ -23,7 +23,7 @@ const Instructor = (props) => {
         axios.delete(`https://anywhere-fitness-2021.herokuapp.com/api/classes/${item.classId}`)
              .then(res => {
                  console.log(res);
-                 deleteClass(res.data.classId);
+                 fetchClasses();
              })
              .catch(err => {
                  console.log(err);
