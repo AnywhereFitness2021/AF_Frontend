@@ -47,7 +47,7 @@ const Client = (props) => {
     const filter2 = val => {
         if(search2 === 0) {
             return val
-        }else if (val.startTime.includes(search2)) {
+        }else if (val.startTime.includes(search2.charAt(0,1))) {
             return val
     }}
     const filter3 = val => {
