@@ -7,14 +7,14 @@ Marketing page: https://github.com/LambdaSchoolBuildWeeks/Unit1Marketing/raw/mai
 
 Components  
 [x] Create New Class  
-[ ] Edit Class  
+[x] Edit Class  
 [ ] Join Class  
-[ ] Login Screen  
+[x] Login Screen  
 [ ] Manage Classes - Client  
 [x] Manage Classes - Instructor  
 [ ] Onboarding - Client  
 [ ] Onboarding - Instructor  
-[ ] Registration Screen  
+[x] Registration Screen  
 [ ] Reschedule Class  
 [x] Search Classes  
 [ ] Virtual Punch Pass  
