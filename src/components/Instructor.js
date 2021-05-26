@@ -5,7 +5,7 @@
 
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import axiosWithAuth from '../utils/axiosWithAuth';
 import { useHistory } from 'react-router';
 import { fetchClasses, editClass, deleteClass } from '../actions/Actions';
 import { connect } from 'react-redux';
@@ -20,7 +20,7 @@ const Instructor = (props) => {
     }, []);
     
     const handleDeleteClick = (item) => {
-        axiosWithAuth().delete(`https://anywhere-fitness-2021.herokuapp.com/api/classes/${item.classId}`)
+        axiosWithAuth().delete(`/classes/${item.classId}`)
              .then(res => {
                  console.log(res);
                  fetchClasses();
