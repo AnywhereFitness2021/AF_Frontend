@@ -10,6 +10,7 @@ import RegisterForm from './components/register'
 import CreateClassForm from './components/CreateClassForm';
 import Client from './components/Client';
 import Instructor from './components/Instructor';
+import EditClassForm from './components/EditClassForm';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
            <Route path="/login" component={LoginForm} />
            <Route exact path="/client" component={Client}/>
            <Route exact path="/addclass" component={CreateClassForm}/>
+           <Route exact path="/editclass/:id" component={EditClassForm}/>
         </Switch>
       </Router>
     </>

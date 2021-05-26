@@ -10,3 +10,5 @@ export const axiosWithAuth = () => {
         baseURL: 'https://anywhere-fitness-2021.herokuapp.com/api'
     });
 }
+
+export default axiosWithAuth;

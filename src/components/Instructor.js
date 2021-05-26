@@ -5,7 +5,7 @@
 
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-// import { axiosWithAuth } from '../../axiosWithAuth';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useHistory } from 'react-router';
 import { fetchClasses, editClass, deleteClass } from '../actions/Actions';
 import { connect } from 'react-redux';
@@ -13,14 +13,14 @@ import { connect } from 'react-redux';
 
 const Instructor = (props) => {
     const { push } = useHistory();
-    const { classes, isFetching, error, dispatch, fetchClasses, deleteClass } = props;
+    const { classes, isFetching, error, dispatch, fetchClasses } = props;
 
     useEffect(() => {
         fetchClasses();
     }, []);
     
     const handleDeleteClick = (item) => {
-        axios.delete(`https://anywhere-fitness-2021.herokuapp.com/api/classes/${item.classId}`)
+        axiosWithAuth().delete(`https://anywhere-fitness-2021.herokuapp.com/api/classes/${item.classId}`)
              .then(res => {
                  console.log(res);
                  fetchClasses();
@@ -37,13 +37,13 @@ const Instructor = (props) => {
             <h2>Upcoming Classes:</h2>
             {classes.map(item => {
                 return(
-                    <div>
+                    <div key={item.classId}>
                         <h2>{item.name}: {item.type}.</h2>
                         <p>Starts at {item.startTime} and goes for {item.duration}.</p>
                         <p>Located in: {item.location}. Intensity level: {item.intensityLevel}</p>
                         <p>Max Class Size: {item.maxClassSize} Current Attendance Total: {item.attendees}</p>
                         <span>
-                            <button>Edit Class</button>
+                            <button onClick={() => {push(`/editclass/${item.classId}`)}}>Edit Class</button>
                             <button onClick={() => handleDeleteClick(item)}>Delete Class</button>
                             <button>Take Attendance</button>
                         </span>
@@ -63,4 +63,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, { deleteClass, fetchClasses })(Instructor);
+export default connect(mapStateToProps, { fetchClasses })(Instructor);
