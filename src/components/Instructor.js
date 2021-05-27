@@ -5,13 +5,14 @@
 
 import React, { useEffect } from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
-import { useHistory } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import { fetchClasses } from '../actions/Actions';
 import { connect } from 'react-redux';
 // import '../styles/Client.css';
 
 const Instructor = (props) => {
     const { push } = useHistory();
+    const { id } = useParams();
     const { classes, fetchClasses } = props;
 
     useEffect(() => {
@@ -23,6 +24,7 @@ const Instructor = (props) => {
         axiosWithAuth().delete(`/classes/${item.classId}`)
              .then(res => {
                  console.log(res);
+                 console.log(id);
                  fetchClasses();
              })
              .catch(err => {
@@ -33,12 +35,14 @@ const Instructor = (props) => {
     return (
         <div>
             <h1>Hi Instructor!</h1>
-            <button onClick={() => push(`/addclass`)}>Add a Class!</button>
+            <button onClick={() => push(`/addclass/${id}`)}>Add a Class!</button>
             <h2>Upcoming Classes:</h2>
-            {classes.map(item => {
+            {classes.filter(item => 
+                item.userId == id
+            ).map(item => {
                 return(
                     <div key={item.classId}>
-                        <h2>{item.name}: {item.type}.</h2>
+                        {<h2>{item.name}: {item.type}.</h2>}
                         <p>Starts at {item.startTime} and goes for {item.duration}.</p>
                         <p>Located in: {item.location}. Intensity level: {item.intensityLevel}</p>
                         <p>Max Class Size: {item.maxClassSize} Current Attendance Total: {item.attendees}</p>

@@ -45,7 +45,7 @@ function LoginForm(props) {
             if (res.data.role === 'client') {
                 history.push('/client');
             } else {
-                history.push('/instructor');
+                history.push(`/instructor/${res.data.userId}`);
             }
           })
           .catch((err) => {

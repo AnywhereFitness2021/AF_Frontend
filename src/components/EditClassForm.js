@@ -49,7 +49,7 @@ const EditClassForm = (props) => {
         axiosWithAuth().put(`/classes/${id}`, itemToBeSubmit)
             .then(res => {
                 console.log(res);
-                push('/instructor');
+                push(`/instructor/${id}`);
             })
             .catch(err => {
                 console.log(err);
@@ -63,7 +63,7 @@ const EditClassForm = (props) => {
 
 
     const handleCancel = () => {
-        push('/instructor');
+        push(`/instructor/${id}`);
       }
 
 
