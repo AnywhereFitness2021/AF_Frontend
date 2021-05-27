@@ -6,14 +6,16 @@ import './index.css';
 import Logo from './AnywhereFitnessLogo.png';
 import styled from 'styled-components';
 //CUSTOM IMPORTS
-import LoginForm from './components/login'
-import RegisterForm from './components/register'
+import LoginForm from './components/login';
+import RegisterForm from './components/register';
 import CreateClassForm from './components/CreateClassForm';
 import Client from './components/Client';
 import Instructor from './components/Instructor';
 import EditClassForm from './components/EditClassForm';
 import Homepage from './components/Homepage';
 import PrivateRoute from './components/PrivateRoute';
+import OnboardClient from './components/onboarding/onboard-client';
+import OnboardInstructor from './components/onboarding/onboard-instructor';
 
 const StyledLink = styled(Link)`
   color: black;

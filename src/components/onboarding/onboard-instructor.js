@@ -15,6 +15,4 @@ function OnboardInstructor(props) {
     )
 }
 
-export {
-    OnboardInstructor
-}
+export default OnboardInstructor

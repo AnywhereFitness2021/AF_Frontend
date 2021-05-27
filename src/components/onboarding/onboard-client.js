@@ -15,6 +15,4 @@ function OnboardClient(props) {
     )
 }
 
-export {
-    OnboardClient
-}
+export default OnboardClient
