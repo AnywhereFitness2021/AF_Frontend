@@ -13,6 +13,7 @@ function CanCreateClass() {
                 <li>Location</li>
                 <li>Maximum Class Size</li>
             </ul>
+            <p>You may also edit and delete these classes!</p>
         </div>
     )
 }
