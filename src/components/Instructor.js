@@ -3,20 +3,20 @@
 
 //Should be able to see only their own classes(NOT DOABLE YET)
 
-import axios from 'axios';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
 import { useHistory } from 'react-router';
-import { fetchClasses, editClass, deleteClass } from '../actions/Actions';
+import { fetchClasses } from '../actions/Actions';
 import { connect } from 'react-redux';
 // import '../styles/Client.css';
 
 const Instructor = (props) => {
     const { push } = useHistory();
-    const { classes, isFetching, error, dispatch, fetchClasses } = props;
+    const { classes, fetchClasses } = props;
 
     useEffect(() => {
         fetchClasses();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     
     const handleDeleteClick = (item) => {

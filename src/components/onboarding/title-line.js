@@ -1,12 +1,17 @@
 import React from 'react'
+import styled from 'styled-components';
+
+const P = styled.p `
+    font-size: 3rem;
+`
 
 function TitleLine(props) {
     const { as } = props;
 
     return (
-        <p>
+        <P>
           As {as}, you can:  
-        </p>
+        </P>
     )
 }
 

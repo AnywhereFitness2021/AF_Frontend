@@ -30,7 +30,7 @@ const EditClassForm = (props) => {
             .catch(err => {
                 console.log('ERROR', err);
             })
-    }, [])
+    }, [id])
 
     const onSubmit = (evt) => {
         evt.preventDefault();
