@@ -6,7 +6,6 @@ import { loginSchema as schema } from '../schema/loginSchema'
 import axios from 'axios';
 
 function LoginForm(props) {
-    const { setLoggedOut } = props;
 
     const initialValues = {
         username: "",
@@ -70,7 +69,6 @@ function LoginForm(props) {
     }
 
     const handleSubmit = () => {
-        setLoggedOut(false);
         postNewLogin(form)
     }
 

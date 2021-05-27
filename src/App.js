@@ -34,10 +34,7 @@ const StyledLink = styled(Link)`
 
 function App() {
 
-  const [loggedOut, setLoggedOut] = useState(true); // false = logout button appears, true = logout button disappears
-  
   const logout = () => {
-    setLoggedOut(true);
     window.localStorage.removeItem('token');
   };
 
@@ -47,16 +44,16 @@ function App() {
         <div className="logoAndHeading"></div>
         <img className="logo" src={Logo} alt="gym barbell"/>
         <h1 className="mainHeading">Anywhere Fitness</h1>
-        {  <StyledLink onClick={logout} to="/login">Logout</StyledLink>} 
+          <StyledLink onClick={logout} to="/login">Logout</StyledLink>
           <Switch>
             <PrivateRoute exact path="/instructor/onboarding/:id" component={OnboardInstructor}/>
             <PrivateRoute exact path="/client/onboarding/:id" component={OnboardClient}/>
-            <PrivateRoute exact path="/client" component={Client}/>
+            <PrivateRoute exact path="/client/:id" component={Client}/>
             <PrivateRoute exact path="/instructor/:id" component={Instructor}/>
             <Route exact path="/addclass/:id" component={CreateClassForm}/>
             <Route exact path="/editclass/:id" component={EditClassForm}/>
             <Route path="/login">
-              <LoginForm loggedOut={loggedOut} setLoggedOut={setLoggedOut}/>
+              <LoginForm />
             </Route>
             <Route path="/register" component={RegisterForm}/>
             <Route exact path="/" component={Homepage} />
