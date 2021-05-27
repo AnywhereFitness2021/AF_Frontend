@@ -1,25 +1,30 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 
 const StyledContainer = styled.div `
     font-size: 1.8rem;
     margin-top: 8%;
 `
 
-function SkipThis() {
-    const [skip, setSkip] = useState();
+function SkipThis(props) {
+    const { id } = props;
+    const { push } = useHistory();
 
-    const update = (event) => {
-        const {checked} = event.target;
-        setSkip(checked);
+    const update = () => {
+        axiosWithAuth().patch(`/users/${id}`, {skip : 1})
+            .then(res => {
+                console.log(res);
+            })
+            .catch(err => {
+                console.log({err});
+            })
     }
 
     return (
         <StyledContainer>
-            <label htmlFor="skipThis">Never Show This Again
-                <input id="skip-this" name="skip" type="checkbox"
-                    onChange={update} value={skip}/>
-            </label>
+            <button onClick={update}>Never Show This Again!</button>
         </StyledContainer>
     )
 }

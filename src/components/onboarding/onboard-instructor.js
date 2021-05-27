@@ -1,5 +1,5 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { CanCreateClass } from './can-create-class'
 import { CanCreateVirtualPunchPass } from './can-create-punch-pass'
 import { SkipThis } from './skip-this'
@@ -47,9 +47,10 @@ const OuterContainer = styled.div`
 
 function OnboardInstructor(props) {
     const { push } = useHistory();
+    const { id } = useParams();
 
     const routeToInstructor = () =>  {
-        push('/instructor')
+        push(`/instructor/${id}`)
     }
 
     return (
@@ -59,7 +60,7 @@ function OnboardInstructor(props) {
                 <CanCreateClass />
                 <h3>and</h3>
                 <CanCreateVirtualPunchPass />
-                <SkipThis />
+                <SkipThis id={id} />
                 <button onClick={routeToInstructor}>Continue</button>
             </StyledContainer>
         </OuterContainer>

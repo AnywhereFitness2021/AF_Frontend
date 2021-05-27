@@ -10,7 +10,8 @@ const initialFormValues = {
     intensityLevel: '',
     location: '',
     attendees: 0,
-    maxClassSize: 0
+    maxClassSize: 0,
+    userId: '',
 };
 
 
@@ -44,6 +45,7 @@ const EditClassForm = (props) => {
             location: formValues.location.trim(),
             attendees: formValues.attendees,
             maxClassSize: formValues.maxClassSize,
+            userId: id,
         }
 
         axiosWithAuth().put(`/classes/${id}`, itemToBeSubmit)

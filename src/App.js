@@ -49,8 +49,8 @@ function App() {
         <h1 className="mainHeading">Anywhere Fitness</h1>
         {  <StyledLink onClick={logout} to="/login">Logout</StyledLink>} 
           <Switch>
-            <PrivateRoute exact path="/instructor/onboarding" component={OnboardInstructor}/>
-            <PrivateRoute exact path="/client/onboarding" component={OnboardClient}/>
+            <PrivateRoute exact path="/instructor/onboarding/:id" component={OnboardInstructor}/>
+            <PrivateRoute exact path="/client/onboarding/:id" component={OnboardClient}/>
             <PrivateRoute exact path="/client" component={Client}/>
             <PrivateRoute exact path="/instructor/:id" component={Instructor}/>
             <Route exact path="/addclass/:id" component={CreateClassForm}/>

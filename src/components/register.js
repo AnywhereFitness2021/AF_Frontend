@@ -12,7 +12,7 @@ function RegisterForm(props) {
         username: "",
         password: "",
         confirmPassword: "",
-        role: ""
+        role: "",
     }
     const [disabled, setDisabled] = useState(true);
     const [form, setForm] = useState(initialValues);
@@ -27,7 +27,7 @@ function RegisterForm(props) {
             history.push('/login');
           })
           .catch((err) => {
-            console.log(err);
+            console.log({err});
           });
     };
 

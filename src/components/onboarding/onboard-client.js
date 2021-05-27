@@ -1,5 +1,5 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { CanReserveClass } from './can-reserve-class'
 import { CanSearchClass } from './can-search-class'
 import { SkipThis } from './skip-this'
@@ -43,9 +43,10 @@ const OuterContainer = styled.div`
 
 function OnboardClient(props) {
     const { push } = useHistory();
+    const { id } = useParams();
 
     const routeToClient = () =>  {
-        push('/client')
+        push(`/client/${id}`)
     }
     
     return (
@@ -54,7 +55,7 @@ function OnboardClient(props) {
                 <TitleLine as="a client" />
                 <CanSearchClass />
                 <CanReserveClass />
-                <SkipThis />
+                <SkipThis id={id} />
                 <button onClick={routeToClient}>Continue</button>
             </StyledContainer>
         </OuterContainer>
