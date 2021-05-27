@@ -1,7 +1,6 @@
 // filler file to help Github confirm file structure
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
 
 export const FETCH_START = "FETCH_START";
 export const FETCH_SUCCESS = "FETCH_SUCCESS";

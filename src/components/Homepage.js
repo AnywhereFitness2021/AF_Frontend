@@ -17,7 +17,7 @@ const InfoContainer = styled.div`
     align-items: center;
     justify-content: center;
     height: 50vh;
-    opacity: 90%;
+    opacity: 95%;
     border: 2px #3a3a3a solid;
     background-color: white;
     width: 40%;

@@ -1,9 +1,14 @@
 import React from 'react'
+import styled from 'styled-components';
+
+const P = styled.p `
+    font-size: 2rem;
+`
 
 function CanCreateVirtualPunchPass() {
     return (
         <div>
-            <p>Create virtual punch passes for your class.</p>
+            <P>Create virtual punch passes for your class.</P>
         </div>
     )
 }

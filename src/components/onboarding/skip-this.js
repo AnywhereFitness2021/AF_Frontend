@@ -1,4 +1,10 @@
 import React, { useState } from 'react'
+import styled from 'styled-components';
+
+const StyledContainer = styled.div `
+    font-size: 1.8rem;
+    margin-top: 8%;
+`
 
 function SkipThis() {
     const [skip, setSkip] = useState();
@@ -9,12 +15,12 @@ function SkipThis() {
     }
 
     return (
-        <div>
+        <StyledContainer>
             <label htmlFor="skipThis">Never Show This Again
                 <input id="skip-this" name="skip" type="checkbox"
                     onChange={update} value={skip}/>
             </label>
-        </div>
+        </StyledContainer>
     )
 }
 

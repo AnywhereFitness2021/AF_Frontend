@@ -49,7 +49,8 @@ function LoginForm(props) {
             }
           })
           .catch((err) => {
-            console.log(err);
+            //console.log({err});
+            alert(err.response.data.message);
           });
       };
 
