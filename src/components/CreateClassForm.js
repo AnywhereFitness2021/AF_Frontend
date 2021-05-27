@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import * as yup from 'yup';
 import { classFormSchema as schema} from '../schema/classformSchema';
 import axiosWithAuth from '../utils/axiosWithAuth';
 
 
-const initialFormValues = {
+
+function CreateClassForm(props) {
+    
+  const { id } = useParams();
+  const { push } = useHistory();
+  
+  const initialFormValues = {
     name: '',
     type: '',
     startTime: '',
@@ -13,16 +19,15 @@ const initialFormValues = {
     intensityLevel: '',
     location: '',
     attendees: 0,
-    maxClassSize: 0
-};
-
-function CreateClassForm(props) {
-    const [formValues, setFormValues] = useState(initialFormValues);
-    const [formErrors, setFormErrors] = useState({});
-    const { push } = useHistory();
+    maxClassSize: 0,
+    userId: id,
+  };
+  
+  const [formValues, setFormValues] = useState(initialFormValues);
+  const [formErrors, setFormErrors] = useState({});
   
     const handleCancel = () => {
-      push('/instructor');
+      push(`/instructor/${id}`);
     }
 
     
@@ -44,7 +49,7 @@ function CreateClassForm(props) {
       axiosWithAuth().post('/classes', formValues)
            .then(res => {
             console.log(res);
-            push('/instructor');
+            push(`/instructor/${id}`);
            })
            .catch(err => {
              console.log(err);
