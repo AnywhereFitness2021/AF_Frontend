@@ -6,6 +6,8 @@ import { loginSchema as schema } from '../schema/loginSchema'
 import axios from 'axios';
 
 function LoginForm(props) {
+    const { setLoggedOut } = props;
+
     const initialValues = {
         username: "",
         password: "",
@@ -42,10 +44,8 @@ function LoginForm(props) {
             localStorage.setItem('token', `"${token}"`);
             if (res.data.role === 'client') {
                 history.push('/client');
-                alert(res.data.welcomeMessage)
             } else {
                 history.push('/instructor');
-                alert(res.data.welcomeMessage)
             }
           })
           .catch((err) => {
@@ -65,6 +65,7 @@ function LoginForm(props) {
     }
 
     const handleSubmit = () => {
+        setLoggedOut(false);
         postNewLogin(form)
     }
 
