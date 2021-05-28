@@ -10,11 +10,11 @@ Components
 [x] Edit Class  
 [x] Join Class  
 [x] Login Screen  
-[ ] Manage Classes - Client  
+[x] Manage Classes - Client  
 [x] Manage Classes - Instructor  
 [x] Onboarding - Client  
 [x] Onboarding - Instructor  
 [x] Registration Screen  
-[ ] Reschedule Class  
+[x] Reschedule Class  
 [x] Search Classes  
-[ ] Virtual Punch Pass  
+[x] Virtual Punch Pass  

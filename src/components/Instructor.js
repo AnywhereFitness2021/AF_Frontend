@@ -80,6 +80,7 @@ const IntroStyles = styled.div`
     button{
         padding:0.8%;
         width:6%;
+        width: 180px;
     }
 
     h2{
