@@ -19,8 +19,12 @@ const StyledContainer = styled.div`
     box-shadow: 0px 1px 5px 2px rgb(168, 167, 167);
     background-image: linear-gradient(to bottom right, green, #95ce95);
 
+    h3 {
+        font-size: 1.6rem;
+    }
+
     button{
-        padding:0.5em;
+        padding:1.1em;
         border:0.16em solid #FFFFFF;
         margin-top: 3%;
         text-transform:uppercase;
@@ -28,6 +32,7 @@ const StyledContainer = styled.div`
         font-weight:400;
         color:#FFFFFF;
         background:none;
+        width:180px;
 
         &:hover {
             color:#DDDDDD;
