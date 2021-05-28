@@ -8,12 +8,12 @@ Marketing page: https://github.com/LambdaSchoolBuildWeeks/Unit1Marketing/raw/mai
 Components  
 [x] Create New Class  
 [x] Edit Class  
-[ ] Join Class  
+[x] Join Class  
 [x] Login Screen  
 [ ] Manage Classes - Client  
 [x] Manage Classes - Instructor  
-[ ] Onboarding - Client  
-[ ] Onboarding - Instructor  
+[x] Onboarding - Client  
+[x] Onboarding - Instructor  
 [x] Registration Screen  
 [ ] Reschedule Class  
 [x] Search Classes  
