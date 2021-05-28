@@ -75,7 +75,7 @@ function CreateClassForm(props) {
 
 
     return (
-      <form onSubmit={onSubmit}>
+      <form id="form-class-create" className="form form-class-create" onSubmit={onSubmit}>
         <div>
           <h2>Add a Class:</h2>
           <div>

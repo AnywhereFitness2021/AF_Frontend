@@ -1,5 +1,5 @@
 //TECH IMPORTS
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 //STYLING IMPORTS
 import './index.css';

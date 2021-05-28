@@ -79,12 +79,14 @@ const Client = (props) => {
       <div>
         <div className="search-box">
             <h4>Search for Classes:</h4>
-            <input className="search" type="text" placeholder="Filter by name.." onChange={onChange1}/>
-            <input className="search" type="time" placeholder="Filter by time.." onChange={onChange2}/>
-            <input className="search" type="number" placeholder="Filter by duration..." onChange={onChange3}/>
-            <input className="search" type="text" placeholder="Filter by type..." onChange={onChange4}/>
-            <input className="search" type="text" placeholder="Filter by intensity level..." onChange={onChange5}/>
-            <input className="search" type="text" placeholder="Filter by location..." onChange={onChange6}/>
+            <div className="flexbox">
+                <input className="search" type="text" placeholder="Filter by name.." onChange={onChange1}/>
+                <input className="search" type="time" placeholder="Filter by time.." onChange={onChange2}/>
+                <input className="search" type="number" placeholder="Filter by duration..." onChange={onChange3}/>
+                <input className="search" type="text" placeholder="Filter by type..." onChange={onChange4}/>
+                <input className="search" type="text" placeholder="Filter by intensity level..." onChange={onChange5}/>
+                <input className="search" type="text" placeholder="Filter by location..." onChange={onChange6}/>
+            </div>
         </div>
         <h1>Classes Available to Join:</h1>
           {isFetching && (

@@ -33,12 +33,12 @@ const Instructor = (props) => {
 }
 
     return (
-        <div>
+        <div className="form">
             <h1>Hi Instructor!</h1>
             <button onClick={() => push(`/addclass/${id}`)}>Add a Class!</button>
             <h2>Upcoming Classes:</h2>
             {classes.filter(item => 
-                item.userId == id
+                item.userId === id
             ).map(item => {
                 return(
                     <div key={item.classId}>
