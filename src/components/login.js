@@ -38,7 +38,7 @@ function LoginForm(props) {
         axios
           .post('https://anywhere-fitness-2021.herokuapp.com/api/users/login', newLogin)
           .then((res) => {
-            console.log('login', res);
+            //console.log('login', res);
             const token = res.data.token;
             localStorage.setItem('token', `"${token}"`);
             if (res.data.skip === false && res.data.role === 'client') {

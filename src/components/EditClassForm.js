@@ -2,6 +2,73 @@ import React, {useEffect, useState} from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import axiosWithAuth from '../utils/axiosWithAuth';
 
+import styled from 'styled-components';
+
+const OuterContainer = styled.form`
+    display:flex;
+    flex-wrap:nowrap;
+    justify-content:center;
+    align-items: center;
+    width:100%;
+    height: 80vh;
+`
+
+const InnerContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 4px;
+    padding: 2% 0;
+    width: 40%;
+    margin: 3%;
+    margin-top:10%;
+    font-family: 'Fira Sans Condensed', sans-serif;
+    max-height:80vh;
+
+    h2 {
+        font-size: 2.5rem;
+        color: white;
+        margin-bottom:8%;
+    }
+
+    label {
+      font-size:1.8rem;
+      display:block;
+      padding-bottom: 8%;
+      width:400px;
+      color:black;
+    }
+
+    input, select{
+      display:block;
+      padding:2%;
+      width:500px;
+    }
+
+    button{
+        padding:3%;
+        width:150px;
+        font-size:1.7rem;
+        font-weight: 600;
+        background:none;
+        border-color:blue;
+        opacity: 0.5;
+        margin-top:20%;
+
+        &:hover{
+            filter: brightness(1.8);
+            opacity:1;
+        }
+    }
+`
+
+const Label = styled.label`
+  &:focus-within {
+    color: white;
+    }
+`
+
 const initialFormValues = {
     name: '',
     type: '',
@@ -25,7 +92,7 @@ const EditClassForm = (props) => {
     useEffect(() => {
         axiosWithAuth().get(`/classes/${id}`)
             .then(res => {
-                console.log(res.data);
+                //console.log(res.data);
                 setFormValues(res.data);
             })
             .catch(err => {
@@ -50,7 +117,7 @@ const EditClassForm = (props) => {
 
         axiosWithAuth().put(`/classes/${id}`, itemToBeSubmit)
             .then(res => {
-                console.log(res);
+                //console.log(res);
                 push(`/instructor/${id}`);
             })
             .catch(err => {
@@ -64,18 +131,18 @@ const EditClassForm = (props) => {
       };
 
 
-    const handleCancel = () => {
+    const handleCancel = (id) => {
         push(`/instructor/${id}`);
       }
 
 
     return (
-        <form onSubmit={onSubmit}>
-        <div>
+        <OuterContainer onSubmit={onSubmit}>
+        <InnerContainer>
           <h2>Edit your Class:</h2>
           <div>
             {/* <div className="error">{formErrors.name}</div> */}
-            <label>
+            <Label>
               Name of Class&nbsp;
               <input
                 type="text"
@@ -84,11 +151,11 @@ const EditClassForm = (props) => {
                 name="name"
                 placeholder="enter class name here.."
               />
-            </label>
+            </Label>
           </div>
           <div>
             {/* <div className="error">{formErrors.type}</div> */}
-            <label>
+            <Label>
               Class Type:&nbsp;
               <input
                 type="text"
@@ -97,11 +164,11 @@ const EditClassForm = (props) => {
                 name="type"
                 placeholder="enter type of class here.."
               />
-            </label>
+            </Label>
           </div>
           <div>
             {/* <div className="error">{formErrors.startTime}</div> */}
-            <label>
+            <Label>
               Choose a start time:&nbsp;
               <input
                 type="time"
@@ -109,11 +176,11 @@ const EditClassForm = (props) => {
                 onChange={onChange}
                 name="startTime"
               />
-            </label>
+            </Label>
           </div>
           <div>
             {/* <div className="error">{formErrors.duration}</div> */}
-            <label>
+            <Label>
               Duration (in minutes):&nbsp;
               <input
                 type="text"
@@ -121,11 +188,11 @@ const EditClassForm = (props) => {
                 onChange={onChange}
                 name="duration"
               />
-            </label>
+            </Label>
           </div>
           <div>
             {/* <div className="error">{formErrors.intensityLevel}</div> */}
-            <label>
+            <Label>
               Intensity Level:&nbsp;
               <select value={formValues.intensityLevel} name="intensityLevel" onChange={onChange}>
                 <option value=''>-- Select an Intensity Level --</option>
@@ -133,11 +200,11 @@ const EditClassForm = (props) => {
                 <option value='Intermediate'>Intermediate</option>
                 <option value='Advanced'>Advanced</option>
               </select>
-            </label>
+            </Label>
           </div>
           <div>
             {/* <div className="error">{formErrors.location}</div> */}
-            <label>
+            <Label>
               Location:&nbsp;
               <input
                 type="text"
@@ -146,11 +213,11 @@ const EditClassForm = (props) => {
                 name="location"
                 placeholder="enter location here.."
               />
-            </label>
+            </Label>
           </div>
           <div>
             {/* <div className="error">{formErrors.attendees}</div> */}
-            <label>
+            <Label>
               Current Registered Attendees:&nbsp;
               <input
                 type="number"
@@ -158,11 +225,11 @@ const EditClassForm = (props) => {
                 onChange={onChange}
                 name="attendees"
               />
-            </label>
+            </Label>
           </div>
           <div>
             {/* <div className="error">{formErrors.maxClassSize}</div> */}
-            <label>
+            <Label>
               Max Class Size:&nbsp;
               <input
                 type="number"
@@ -170,14 +237,14 @@ const EditClassForm = (props) => {
                 onChange={onChange}
                 name="maxClassSize"
               />
-            </label>
+            </Label>
           </div>
           <div>
             <button>Update</button>
-            <button onClick={handleCancel}>Cancel</button>
+            <button onClick={() => handleCancel(formValues.userId)}>Cancel</button>
           </div>
-        </div>
-      </form>
+        </InnerContainer>
+      </OuterContainer>
     )
 }
 

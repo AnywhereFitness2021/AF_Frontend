@@ -171,7 +171,7 @@ const Client = (props) => {
                     <h3>Class Type: {item.type}</h3>
                     <h3>Start Time: {item.startTime}</h3>
                     <h3>Intensity Level: {item.intensityLevel}</h3>
-                    <h3>Duration: {item.duration} minutes</h3>
+                    <h3>Duration: {item.duration} minute(s)</h3>
                     <h3>Location: {item.location}</h3>
                     <h3>Attendees: {item.attendees}</h3>
                     <h3>Max Class Size: {item.maxClassSize}</h3>
