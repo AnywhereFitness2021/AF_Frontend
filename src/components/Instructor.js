@@ -130,7 +130,7 @@ const Instructor = (props) => {
                             <p>Current Attendance Total: {item.attendees}</p>
                             <p>Max Class Size: {item.maxClassSize}</p>
                             <span>
-                                <button onClick={() => {push(`/editclass/${item.classId}`)}}>Edit Class</button>
+                                <button onClick={() => {push(`/editclass/${item.userId}`)}}>Edit Class</button>
                                 <button onClick={() => handleDeleteClick(item)}>Delete Class</button>
                                 <button>Take Attendance</button>
                             </span>
