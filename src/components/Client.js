@@ -7,7 +7,10 @@ import styled, { keyframes } from 'styled-components';
 import '../styles/Client.css';
 
 const KF = keyframes`
-    100% {
+    from {
+        transform:translateY(100%)
+    }
+    to {
         transform: translateY(0);
     }
 `
@@ -17,7 +20,6 @@ const OuterContainer = styled.div`
     flex-wrap:wrap;
     justify-content:center;
     width:100%;
-    transform: translateY(100%);
     animation: ${KF} 1.5s ease-in-out forwards;
 `
 

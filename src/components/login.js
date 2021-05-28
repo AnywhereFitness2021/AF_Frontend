@@ -46,7 +46,7 @@ function LoginForm(props) {
             } else if (res.data.skip === false && res.data.role === 'instructor') {
                 history.push(`/instructor/onboarding/${res.data.userId}`)
             } else if (res.data.skip === true && res.data.role === 'client') {
-                history.push('/client')
+                history.push(`/client/${res.data.userId}`)
             } else {
                 history.push(`/instructor/${res.data.userId}`);
             }
