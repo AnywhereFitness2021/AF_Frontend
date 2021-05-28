@@ -1,5 +1,4 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import axiosWithAuth from '../../utils/axiosWithAuth';
 
@@ -10,7 +9,6 @@ const StyledContainer = styled.div `
 
 function SkipThis(props) {
     const { id } = props;
-    const { push } = useHistory();
 
     const update = () => {
         axiosWithAuth().patch(`/users/${id}`, {skip : 1})

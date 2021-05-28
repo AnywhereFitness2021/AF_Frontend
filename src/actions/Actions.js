@@ -17,7 +17,7 @@ export const fetchClasses = () => {
     dispatch(fetchStart());
     axiosWithAuth().get('/classes')
     .then(res=> {
-      console.log('classes', res.data);
+      //console.log('classes', res.data);
       dispatch({type: FETCH_SUCCESS, payload:res.data});
     })
     .catch(err=>{
@@ -36,7 +36,7 @@ export const postNewClass = (item) => {
       .post('https://anywhere-fitness-2021.herokuapp.com/api/classes', item)
       .then((res) => {
         dispatch({type: FETCH_SUCCESS, payload:res.data})
-        console.log(res);
+        //console.log(res);
       })
       .catch((err) => {
         dispatch({type: FETCH_FAIL, payload:err});

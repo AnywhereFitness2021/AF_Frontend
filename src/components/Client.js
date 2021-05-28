@@ -2,8 +2,77 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { fetchClasses } from '../actions/Actions';
 import Loader from 'react-loader-spinner';
+import styled, { keyframes } from 'styled-components';
 
 import '../styles/Client.css';
+
+const KF = keyframes`
+    100% {
+        transform: translateY(0);
+    }
+`
+
+const OuterContainer = styled.div`
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    width:100%;
+    transform: translateY(100%);
+    animation: ${KF} 1.5s ease-in-out forwards;
+`
+
+const InnerContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgb(210, 210, 210);
+    border-radius: 4px;
+    box-shadow: 0px 1px 5px 2px rgb(168, 167, 167);
+    background-image: linear-gradient(to bottom right, green, #95ce95);
+    padding: 2% 0;
+    width: 40%;
+    margin: 3%;
+    font-family: 'Fira Sans Condensed', sans-serif;
+
+    h3 {
+        font-size: 1.9rem;
+        color: black;
+    }
+
+    h2 {
+        text-decoration: underline;
+        font-size: 2.5rem;
+        color: black;
+    }
+
+    button{
+        padding:8%;
+        width:180px;
+        font-size:1.7rem;
+        font-weight: 600;
+        background:none;
+        border-color:blue;
+        opacity: 0.5;
+        border-radius: 100px;
+        margin-top:20%;
+
+        &:hover{
+            filter: brightness(1.8);
+            opacity:1;
+        }
+    }
+`
+
+const H1 = styled.h1`
+    font-size: 3rem;
+    text-align: center;
+    padding-top: 3%;
+`
+
+const H4 = styled.h4`
+    font-size: 2rem;
+`
 
 const Client = (props) => {
     const { fetchClasses, classes, isFetching } = props
@@ -78,7 +147,7 @@ const Client = (props) => {
     return (
       <div>
         <div className="search-box">
-            <h4>Search for Classes:</h4>
+            <H4>Search for Classes:</H4>
             <input className="search" type="text" placeholder="Filter by name.." onChange={onChange1}/>
             <input className="search" type="time" placeholder="Filter by time.." onChange={onChange2}/>
             <input className="search" type="number" placeholder="Filter by duration..." onChange={onChange3}/>
@@ -86,33 +155,33 @@ const Client = (props) => {
             <input className="search" type="text" placeholder="Filter by intensity level..." onChange={onChange5}/>
             <input className="search" type="text" placeholder="Filter by location..." onChange={onChange6}/>
         </div>
-        <h1>Classes Available to Join:</h1>
+        <H1>Classes Available to Join:</H1>
           {isFetching && (
               <div className="spinner">
                 <Loader type="Puff" color="#204963" height="60" width="60" />
                 <p>Loading Data...</p>
               </div>
             )}
-        <div className="outer-class">
+        <OuterContainer>
             {classes.filter(filter1).filter(filter2).filter(filter3)
             .filter(filter4).filter(filter5).filter(filter6).map((item) => {
             return (
-                <div key={item.classId} className="class-container">
-                <h2>{item.name}</h2>
-                <h3>Class Type: {item.type}</h3>
-                <h3>Start Time: {item.startTime}</h3>
-                <h3>Intensity Level: {item.intensityLevel}</h3>
-                <h3>Duration: {item.duration}</h3>
-                <h3>Location: {item.location}</h3>
-                <h3>Attendees: {item.attendees}</h3>
-                <h3>Max Class Size: {item.maxClassSize}</h3>
-                <div className="button">
-                    <button onClick={() => {alert('You have been added to this class!')}}>Join this class</button>
-                </div>
-                </div>
+                <InnerContainer key={item.classId}>
+                    <h2>{item.name}</h2>
+                    <h3>Class Type: {item.type}</h3>
+                    <h3>Start Time: {item.startTime}</h3>
+                    <h3>Intensity Level: {item.intensityLevel}</h3>
+                    <h3>Duration: {item.duration} minutes</h3>
+                    <h3>Location: {item.location}</h3>
+                    <h3>Attendees: {item.attendees}</h3>
+                    <h3>Max Class Size: {item.maxClassSize}</h3>
+                    <div className="button">
+                        <button onClick={() => {alert('You have been added to this class!')}}>Join this class!</button>
+                    </div>
+                </InnerContainer>
             );
             })}
-        </div>
+        </OuterContainer>
       </div>
     );
   };
