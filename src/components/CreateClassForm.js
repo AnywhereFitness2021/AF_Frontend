@@ -4,6 +4,72 @@ import * as yup from 'yup';
 import { classFormSchema as schema} from '../schema/classformSchema';
 import axiosWithAuth from '../utils/axiosWithAuth';
 
+import styled from 'styled-components';
+
+const OuterContainer = styled.form`
+    display:flex;
+    flex-wrap:nowrap;
+    justify-content:center;
+    align-items: center;
+    width:100%;
+    height: 80vh;
+`
+
+const InnerContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 4px;
+    padding: 2% 0;
+    width: 40%;
+    margin: 3%;
+    margin-top:10%;
+    font-family: 'Fira Sans Condensed', sans-serif;
+    max-height:80vh;
+
+    h2 {
+        font-size: 2.5rem;
+        color: white;
+        margin-bottom:8%;
+    }
+
+    label {
+      font-size:1.8rem;
+      display:block;
+      padding-bottom: 8%;
+      width:400px;
+      color:black;
+    }
+
+    input, select{
+      display:block;
+      padding:2%;
+      width:500px;
+    }
+
+    button{
+        padding:3%;
+        width:150px;
+        font-size:1.7rem;
+        font-weight: 600;
+        background:none;
+        border-color:blue;
+        opacity: 0.5;
+        margin-top:20%;
+
+        &:hover{
+            filter: brightness(1.8);
+            opacity:1;
+        }
+    }
+`
+
+const Label = styled.label`
+  &:focus-within {
+    color: white;
+    }
+`
 
 
 function CreateClassForm(props) {
@@ -48,7 +114,7 @@ function CreateClassForm(props) {
       evt.preventDefault();
       axiosWithAuth().post('/classes', formValues)
            .then(res => {
-            console.log(res);
+            //console.log(res);
             push(`/instructor/${id}`);
            })
            .catch(err => {
@@ -75,12 +141,12 @@ function CreateClassForm(props) {
 
 
     return (
-      <form onSubmit={onSubmit}>
-        <div>
+      <OuterContainer onSubmit={onSubmit}>
+        <InnerContainer>
           <h2>Add a Class:</h2>
           <div>
             <div className="error">{formErrors.name}</div>
-            <label>
+            <Label>
               Name of Class&nbsp;
               <input
                 type="text"
@@ -89,11 +155,11 @@ function CreateClassForm(props) {
                 name="name"
                 placeholder="enter class name here.."
               />
-            </label>
+            </Label>
           </div>
           <div>
             <div className="error">{formErrors.type}</div>
-            <label>
+            <Label>
               Class Type:&nbsp;
               <input
                 type="text"
@@ -102,11 +168,11 @@ function CreateClassForm(props) {
                 name="type"
                 placeholder="enter type of class here.."
               />
-            </label>
+            </Label>
           </div>
           <div>
             <div className="error">{formErrors.startTime}</div>
-            <label>
+            <Label>
               Choose a start time:&nbsp;
               <input
                 type="time"
@@ -114,11 +180,11 @@ function CreateClassForm(props) {
                 onChange={onChange}
                 name="startTime"
               />
-            </label>
+            </Label>
           </div>
           <div>
             <div className="error">{formErrors.duration}</div>
-            <label>
+            <Label>
               Duration (in minutes):&nbsp;
               <input
                 type="number"
@@ -126,11 +192,11 @@ function CreateClassForm(props) {
                 onChange={onChange}
                 name="duration"
               />
-            </label>
+            </Label>
           </div>
           <div>
             <div className="error">{formErrors.intensityLevel}</div>
-            <label>
+            <Label>
               Intensity Level:&nbsp;
               <select value={intensityLevel} name="intensityLevel" onChange={onChange}>
                 <option value=''>-- Select an Intensity Level --</option>
@@ -138,11 +204,11 @@ function CreateClassForm(props) {
                 <option value='Intermediate'>Intermediate</option>
                 <option value='Advanced'>Advanced</option>
               </select>
-            </label>
+            </Label>
           </div>
           <div>
             <div className="error">{formErrors.location}</div>
-            <label>
+            <Label>
               Location:&nbsp;
               <input
                 type="text"
@@ -151,11 +217,11 @@ function CreateClassForm(props) {
                 name="location"
                 placeholder="enter location here.."
               />
-            </label>
+            </Label>
           </div>
           <div>
             <div className="error">{formErrors.attendees}</div>
-            <label>
+            <Label>
               Current Registered Attendees:&nbsp;
               <input
                 type="number"
@@ -163,11 +229,11 @@ function CreateClassForm(props) {
                 onChange={onChange}
                 name="attendees"
               />
-            </label>
+            </Label>
           </div>
           <div>
             <div className="error">{formErrors.maxClassSize}</div>
-            <label>
+            <Label>
               Max Class Size:&nbsp;
               <input
                 type="number"
@@ -175,14 +241,14 @@ function CreateClassForm(props) {
                 onChange={onChange}
                 name="maxClassSize"
               />
-            </label>
+            </Label>
           </div>
           <div>
             <button>Add</button>
             <button onClick={handleCancel}>Cancel</button>
           </div>
-        </div>
-      </form>
+        </InnerContainer>
+      </OuterContainer>
     );
 }
   
