@@ -38,6 +38,7 @@ const Instructor = (props) => {
             <button onClick={() => push(`/addclass/${id}`)}>Add a Class!</button>
             <h2>Upcoming Classes:</h2>
             {classes.filter(item => 
+                // eslint-disable-next-line
                 item.userId == id
             ).map(item => {
                 return(

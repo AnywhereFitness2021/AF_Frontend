@@ -1,5 +1,5 @@
 //TECH IMPORTS
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 //STYLING IMPORTS
 import './index.css';
@@ -30,6 +30,10 @@ const StyledLink = styled(Link)`
   text-align:center;
   margin-top:.5%;
   font-size: 15px;
+
+  &:hover {
+    filter: brightness(0.9);
+  }
 `
 
 function App() {
@@ -44,7 +48,7 @@ function App() {
         <div className="logoAndHeading"></div>
         <img className="logo" src={Logo} alt="gym barbell"/>
         <h1 className="mainHeading">Anywhere Fitness</h1>
-          <StyledLink onClick={logout} to="/login">Logout</StyledLink>
+          <StyledLink onClick={logout} to="/">Logout</StyledLink>
           <Switch>
             <PrivateRoute exact path="/instructor/onboarding/:id" component={OnboardInstructor}/>
             <PrivateRoute exact path="/client/onboarding/:id" component={OnboardClient}/>

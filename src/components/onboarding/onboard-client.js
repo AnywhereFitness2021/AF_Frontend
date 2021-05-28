@@ -20,7 +20,7 @@ const StyledContainer = styled.div`
     background-image: linear-gradient(to bottom right, green, #95ce95);
 
     button{
-        padding:0.5em;
+        padding:1.1em;
         border:0.16em solid #FFFFFF;
         margin-top: 3%;
         text-transform:uppercase;
