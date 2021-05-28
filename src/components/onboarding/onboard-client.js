@@ -28,6 +28,7 @@ const StyledContainer = styled.div`
         font-weight:400;
         color:#FFFFFF;
         background:none;
+        width:180px;
 
         &:hover {
             color:#DDDDDD;
